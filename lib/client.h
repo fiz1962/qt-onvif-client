@@ -2,18 +2,25 @@
 #define ONVIF_CLIENT_H
 
 #include <QObject>
-#include <QHttp>
+#include <QtNetwork>
 
 namespace ONVIF {
     class Client : public QObject {
         Q_OBJECT
     public:
         explicit Client(const QString &url);
+        QNetworkReply *reply;
         QString sendData(const QString &data);
+
+    signals:
+
+        void Trace(QString data);
+
     private:
-        void waitForFinish(const QHttp  &http);
+        void waitForFinished(const QNetworkReply* reply);
         QString mUrl;
     };
 }
 
 #endif // ONVIF_CLIENT_H
+

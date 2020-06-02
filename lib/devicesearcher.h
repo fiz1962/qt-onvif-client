@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QUdpSocket>
+#include <QFile>
+#include <QTextStream>
 
 namespace ONVIF {
     class DeviceSearcher : public QObject {
@@ -13,9 +15,15 @@ namespace ONVIF {
         explicit DeviceSearcher(QObject *parent = 0);
         ~DeviceSearcher();
         
-        void sendSearchMsg();
+        void sendSearchMsg(QString localSocket);
+
+        void SendSignal();
+
     signals:
         void receiveData(const QHash<QString, QString> &data);
+
+        void Trace(QString data);
+
     public slots:
     private slots:
         void readPendingDatagrams();

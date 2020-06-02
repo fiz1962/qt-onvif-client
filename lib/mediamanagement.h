@@ -25,6 +25,7 @@ namespace ONVIF {
         Profiles *getProfiles();
         Profile *getProfile720P();
         Profile *getProfileD1();
+        void setVideoEncoderConfiguration(VideoEncoderConfiguration *encode);
         AudioSourceConfigurations *getAudioSourceConfigurations();
         AudioEncoderConfigurations *getAudioEncoderConfigurations();
         VideoSourceConfiguration *getVideoSourceConfiguration();
@@ -32,7 +33,7 @@ namespace ONVIF {
         AudioEncoderConfiguration *getAudioEncoderConfiguration();
         AudioEncoderConfigurationOptions *getAudioEncoderConfigurationOptions();
         VideoEncoderConfigurationOptions *getVideoEncoderConfigurationOptions();
-        StreamUri *getStreamUri();
+        StreamUri *getStreamUri(int nProfile);
     protected:
         Message *newMessage();
         QHash<QString, QString> namespaces(const QString &key);

@@ -1,9 +1,4 @@
-qt-onvif-client
+Branch of qt-onvif-client
 ===============
-
-qt实现的onvif的客户端
-
-## 使用
-
-具体的使用可以先参考 test里面的测试用例，详细的文档有待将来的补充.
-
+Changed password authentication from plain text to digest.
+Several bug fixes and enhancements for Qt 5.15

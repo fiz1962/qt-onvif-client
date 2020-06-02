@@ -26,11 +26,14 @@ MessageParser *Service::sendMessage(Message *message, const QString &namespaceKe
     if(message == NULL) {
         return NULL;
     }
+    qDebug() << message->toXmlStr();
+    QString msgString = message->toXmlStr();
     QString result = mClient->sendData(message->toXmlStr());
     qDebug() << "receive data ==> " << result;
     if(result == "") {
         return NULL;
     }
+
     QHash<QString, QString> names = namespaces(namespaceKey);
     return new MessageParser(result, names);
 }

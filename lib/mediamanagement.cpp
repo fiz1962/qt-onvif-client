@@ -19,35 +19,35 @@ QHash<QString, QString> MediaManagement::namespaces(const QString &key) {
     names.insert("xenc", "http://www.w3.org/2001/04/xmlenc#");
     names.insert("ds", "http://www.w3.org/2000/09/xmldsig#");
     names.insert("wsse", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd");
-    names.insert("wsa5", "http://www.w3.org/2005/08/addressing");
     names.insert("xmime", "http://tempuri.org/xmime.xsd");
     names.insert("xop", "http://www.w3.org/2004/08/xop/include");
+    names.insert("wsbf2", "http://docs.oasis-open.org/wsrf/bf-2");
     names.insert("wsa", "http://schemas.xmlsoap.org/ws/2004/08/addressing");
+    names.insert("wsa5", "http://www.w3.org/2005/08/addressing");
     names.insert("tt", "http://www.onvif.org/ver10/schema");
-    names.insert("wsbf", "http://docs.oasis-open.org/wsrf/bf-2");
     names.insert("wstop", "http://docs.oasis-open.org/wsn/t-1");
-    names.insert("d", "http://schemas.xmlsoap.org/ws/2005/04/discovery");
-    names.insert("wsr", "http://docs.oasis-open.org/wsrf/r-2");
+    names.insert("wsr2", "http://docs.oasis-open.org/wsrf/r-2");
+    names.insert("daae", "http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding");
+    names.insert("dare", "http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding");
+    names.insert("tan", "http://www.onvif.org/ver20/analytics/wsdl");
+    names.insert("decpp", "http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding");
+    names.insert("dee", "http://www.onvif.org/ver10/events/wsdl/EventBinding");
+    names.insert("denc", "http://www.onvif.org/ver10/events/wsdl/NotificationConsumerBinding");
+    names.insert("denf", "http://www.onvif.org/ver10/events/wsdl/NotificationProducerBinding");
+    names.insert("depp", "http://www.onvif.org/ver10/events/wsdl/PullPointBinding");
+    names.insert("depps", "http://www.onvif.org/ver10/events/wsdl/PullPointSubscriptionBinding");
+    names.insert("tev", "http://www.onvif.org/ver10/events/wsdl");
+    names.insert("depsm", "http://www.onvif.org/ver10/events/wsdl/PausableSubscriptionManagerBinding");
+    names.insert("wsnt", "http://docs.oasis-open.org/wsn/b-2");
+    names.insert("desm", "http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding");
     names.insert("dndl", "http://www.onvif.org/ver10/network/wsdl/DiscoveryLookupBinding");
     names.insert("dnrd", "http://www.onvif.org/ver10/network/wsdl/RemoteDiscoveryBinding");
+    names.insert("d", "http://schemas.xmlsoap.org/ws/2005/04/discovery");
     names.insert("dn", "http://www.onvif.org/ver10/network/wsdl");
     names.insert("tad", "http://www.onvif.org/ver10/analyticsdevice/wsdl");
-    names.insert("tanae", "http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding");
-    names.insert("tanre", "http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding");
-    names.insert("tan", "http://www.onvif.org/ver20/analytics/wsdl");
+    names.insert("tae", "http://www.onvif.org/ver10/actionengine/wsdl");
     names.insert("tds", "http://www.onvif.org/ver10/device/wsdl");
-    names.insert("tetcp", "http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding");
-    names.insert("tete", "http://www.onvif.org/ver10/events/wsdl/EventBinding");
-    names.insert("tetnc", "http://www.onvif.org/ver10/events/wsdl/NotificationConsumerBinding");
-    names.insert("tetnp", "http://www.onvif.org/ver10/events/wsdl/NotificationProducerBinding");
-    names.insert("tetpp", "http://www.onvif.org/ver10/events/wsdl/PullPointBinding");
-    names.insert("tetpps", "http://www.onvif.org/ver10/events/wsdl/PullPointSubscriptionBinding");
-    names.insert("tev", "http://www.onvif.org/ver10/events/wsdl");
-    names.insert("tetps", "http://www.onvif.org/ver10/events/wsdl/PausableSubscriptionManagerBinding");
-    names.insert("wsnt", "http://docs.oasis-open.org/wsn/b-2");
-    names.insert("tetsm", "http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding");
     names.insert("timg", "http://www.onvif.org/ver20/imaging/wsdl");
-    names.insert("timg10", "http://www.onvif.org/ver10/imaging/wsdl");
     names.insert("tls", "http://www.onvif.org/ver10/display/wsdl");
     names.insert("tmd", "http://www.onvif.org/ver10/deviceIO/wsdl");
     names.insert("tptz", "http://www.onvif.org/ver20/ptz/wsdl");
@@ -56,9 +56,13 @@ QHash<QString, QString> MediaManagement::namespaces(const QString &key) {
     names.insert("trt", "http://www.onvif.org/ver10/media/wsdl");
     names.insert("trv", "http://www.onvif.org/ver10/receiver/wsdl");
     names.insert("tse", "http://www.onvif.org/ver10/search/wsdl");
-    names.insert("tns1", "http://www.onvif.org/ver10/schema");
+    names.insert("tns1", "http://www.onvif.org/ver10/topics");
     names.insert("tnsn", "http://www.eventextension.com/2011/event/topics");
     names.insert("tnsavg", "http://www.avigilon.com/onvif/ver10/topics");
+    names.insert("ter", "http://www.onvif.org/ver10/error" );
+    names.insert("xmime5", "http://www.w3.org/2005/05/xmlmime");
+    names.insert("hikwsd", "http://www.onvifext.com/onvif/ext/ver10/wsdl");
+    names.insert("hikxsd", "http://www.onvifext.com/onvif/ext/ver10/schema");
 
     return names;
 }
@@ -70,6 +74,23 @@ Message *MediaManagement::newMessage() {
     names.insert("sch", "http://www.onvif.org/ver10/schema");
     return createMessage(names);
 }
+
+void MediaManagement::setVideoEncoderConfiguration(VideoEncoderConfiguration *encode)
+{
+    Message *msg = newMessage();
+    msg->appendToBody(encode->toxml());
+    qDebug() << msg->toXmlStr();
+    MessageParser *result = sendMessage(msg);
+    if(result != NULL){
+        if(result->find("//trt:SetVideoEncoderConfigurationResponse"))
+            encode->setResult(true);
+        else
+            encode->setResult(false);
+        delete result;
+        delete msg;
+    }
+}
+
 VideoSourceConfigurations *MediaManagement::getVideoSourceConfigurations()
 {
     VideoSourceConfigurations *videoSourceConfigurations = NULL;
@@ -384,9 +405,9 @@ Profiles *MediaManagement::getProfiles()
             query->evaluateTo(&value);
             profiles->m_nodeToken.push_back(value.trimmed());
 
-            query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsolutePantTiltPositionSpace/string()");
+            query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsolutePanTiltPositionSpace/string()");
             query->evaluateTo(&value);
-            profiles->m_defaultAbsolutePantTiltPositionSpace.push_back(value.trimmed());
+            profiles->m_defaultAbsolutePanTiltPositionSpace.push_back(value.trimmed());
 
             query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsoluteZoomPositionSpace/string()");
             query->evaluateTo(&value);
@@ -684,9 +705,9 @@ Profile *MediaManagement::getProfile720P()
             query->evaluateTo(&value);
             profile->m_nodeToken.push_back(value.trimmed());
 
-            query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsolutePantTiltPositionSpace/string()");
+            query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsolutePanTiltPositionSpace/string()");
             query->evaluateTo(&value);
-            profile->m_defaultAbsolutePantTiltPositionSpace.push_back(value.trimmed());
+            profile->m_defaultAbsolutePanTiltPositionSpace.push_back(value.trimmed());
 
             query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsoluteZoomPositionSpace/string()");
             query->evaluateTo(&value);
@@ -985,9 +1006,9 @@ Profile *MediaManagement::getProfileD1()
             query->evaluateTo(&value);
             profile->m_nodeToken.push_back(value.trimmed());
 
-            query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsolutePantTiltPositionSpace/string()");
+            query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsolutePanTiltPositionSpace/string()");
             query->evaluateTo(&value);
-            profile->m_defaultAbsolutePantTiltPositionSpace.push_back(value.trimmed());
+            profile->m_defaultAbsolutePanTiltPositionSpace.push_back(value.trimmed());
 
             query->setQuery(result->nameSpace()+"./tt:PTZConfiguration/tt:DefaultAbsoluteZoomPositionSpace/string()");
             query->evaluateTo(&value);
@@ -1323,7 +1344,7 @@ VideoEncoderConfiguration *MediaManagement::getVideoEncoderConfiguration()
 {
     VideoEncoderConfiguration *videoEncoderConfiguration = NULL;
     Message *msg = newMessage();
-    QDomElement token = newElement("wsdl:ConfigurationToken","profile_video_stream_D1");
+    QDomElement token = newElement("wsdl:ConfigurationToken","VideoEncodeConfigToken_m");
     QDomElement body = newElement("wsdl:GetVideoEncoderConfiguration");
     body.appendChild(token);
     msg->appendToBody(body);
@@ -1529,23 +1550,29 @@ VideoEncoderConfigurationOptions *MediaManagement::getVideoEncoderConfigurationO
     return videoEncoderConfigurationOptions;
 }
 
-StreamUri *MediaManagement::getStreamUri()
+StreamUri *MediaManagement::getStreamUri(int nProfile)
 {
     StreamUri *streamUri = NULL;
+    QDomElement profileToken = newElement("ProfileToken", getProfiles()->m_toKenPro[nProfile]);
+
     Message *msg = newMessage();
-    QDomElement stream =newElement("sch:Stream","RTP-Unicast");
-    QDomElement transport = newElement("sch:Transport");
-    QDomElement protocol = newElement("sch:Protocol","RTSP");
-    QDomElement tunnel = newElement("sch:Tunnel");
-    QDomElement streamSetup = newElement("wsdl:StreamSetup");
-    QDomElement getStreamUri = newElement("wsdl:GetStreamUri");
-    QDomElement profileToken = newElement("wsdl:ProfileToken","profile_CIF");
+
+    QDomElement stream =newElement("Stream","RTP-Unicast");
+    stream.setAttribute("xmlns", "http://www.onvif.org/ver10/schema");
+    QDomElement transport = newElement("Transport");
+    transport.setAttribute("xmlns", "http://www.onvif.org/ver10/schema");
+    QDomElement protocol = newElement("Protocol","RTSP");
+    QDomElement tunnel = newElement("Tunnel");
+    QDomElement streamSetup = newElement("StreamSetup");
+    QDomElement getStreamUri = newElement("GetStreamUri");
+
     getStreamUri.appendChild(streamSetup);
     getStreamUri.appendChild(profileToken);
+    getStreamUri.setAttribute("xmlns", "http://www.onvif.org/ver10/media/wsdl");
     streamSetup.appendChild(stream);
     streamSetup.appendChild(transport);
     transport.appendChild(protocol);
-    transport.appendChild(tunnel);
+    //transport.appendChild(tunnel);
     msg->appendToBody(getStreamUri);
     MessageParser *result = sendMessage(msg);
     if(result != NULL){

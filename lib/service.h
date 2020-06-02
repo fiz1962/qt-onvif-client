@@ -15,13 +15,15 @@ namespace ONVIF {
         ~Service();
         MessageParser *sendMessage(Message &message, const QString &namespaceKey = "");
         MessageParser *sendMessage(Message *message, const QString &namespaceKey = "");
-        
+
+        Client *mClient;
+
     protected:
         virtual QHash<QString, QString> namespaces(const QString &key) = 0;
         Message *createMessage(QHash<QString, QString> &namespaces);
     private:
         QString mUsername, mPassword;
-        Client *mClient;
+
     };
 }
 

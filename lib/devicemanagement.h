@@ -29,6 +29,7 @@ namespace ONVIF {
         Capabilities *getCapabilitiesImaging();
         Capabilities *getCapabilitiesMedia();
         Capabilities *getCapabilitiesDevice();
+
     protected:
         Message *newMessage();
         QHash<QString, QString> namespaces(const QString &key);

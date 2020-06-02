@@ -3,9 +3,11 @@
 #include <QXmlQuery>
 #include <QBuffer>
 #include "messageparser.h"
+#include <QFile>
+#include <QTextStream>
+#include "mainwindow.h"
 
 using namespace ONVIF;
-
 
 DeviceSearcher* DeviceSearcher::searcher = NULL;
 
@@ -18,10 +20,8 @@ DeviceSearcher* DeviceSearcher::instance() {
 
 DeviceSearcher::DeviceSearcher(QObject *parent) : QObject(parent) {
     mUdpSocket = new QUdpSocket(this);
-    mUdpSocket->bind(QHostAddress::Any, 0, QUdpSocket::ShareAddress);
 
-    connect(mUdpSocket, SIGNAL(readyRead()),
-            this, SLOT(readPendingDatagrams()));
+    connect(mUdpSocket, SIGNAL(readyRead()), this, SLOT(readPendingDatagrams()));
 }
 
 DeviceSearcher::~DeviceSearcher() {
@@ -32,11 +32,15 @@ DeviceSearcher::~DeviceSearcher() {
     }
 }
 
+void DeviceSearcher::sendSearchMsg(QString localSocket) {
 
-void DeviceSearcher::sendSearchMsg() {
+    emit Trace("Search Request");
+
+    mUdpSocket->bind(QHostAddress(localSocket), 0, QUdpSocket::ShareAddress);
+
     Message *msg = Message::getOnvifSearchMessage();
     QString msg_str = msg->toXmlStr();
-    qDebug() << msg_str;
+    emit Trace(msg_str+"\n");
     mUdpSocket->writeDatagram(msg_str.toUtf8(), QHostAddress("239.255.255.250"), 3702);
 }
 
@@ -50,8 +54,9 @@ void DeviceSearcher::readPendingDatagrams() {
         mUdpSocket->readDatagram(datagram.data(), datagram.size(),
                                 &sender, &senderPort);
         
-//        qDebug() << "========> \n" << datagram << "\n++++++++++++++++++++++++\n";
-        
+        emit Trace("Search Response");
+        emit Trace(datagram+"\n");
+
         QHash<QString, QString> namespaces;
         namespaces.insert("SOAP-ENV", "http://www.w3.org/2003/05/soap-envelope");
         namespaces.insert("SOAP-ENC", "http://www.w3.org/2003/05/soap-encoding");
@@ -75,8 +80,8 @@ void DeviceSearcher::readPendingDatagrams() {
         namespaces.insert("dnrd", "http://www.onvif.org/ver10/network/wsdl/RemoteDiscoveryBinding");
         namespaces.insert("dn", "http://www.onvif.org/ver10/network/wsdl");
         namespaces.insert("tad", "http://www.onvif.org/ver10/analyticsdevice/wsdl");
-        namespaces.insert("tanae", "http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding");
-        namespaces.insert("tanre", "http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding");
+        namespaces.insert("tanae", "http://www.onvif.org/ver10/analytics/wsdl/AnalyticsEngineBinding");
+        namespaces.insert("tanre", "http://www.onvif.org/ver10/analytics/wsdl/RuleEngineBinding");
         namespaces.insert("tan", "http://www.onvif.org/ver20/analytics/wsdl");
         namespaces.insert("tds", "http://www.onvif.org/ver10/device/wsdl");
         namespaces.insert("tetcp", "http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding");
@@ -90,7 +95,7 @@ void DeviceSearcher::readPendingDatagrams() {
         namespaces.insert("wsnt", "http://docs.oasis-open.org/wsn/b-2");
         namespaces.insert("tetsm", "http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding");
         namespaces.insert("timg", "http://www.onvif.org/ver20/imaging/wsdl");
-        namespaces.insert("timg10", "http://www.onvif.org/ver10/imaging/wsdl");
+        namespaces.insert("timg10", "http://www.onvif.org/ver20/imaging/wsdl");
         namespaces.insert("tls", "http://www.onvif.org/ver10/display/wsdl");
         namespaces.insert("tmd", "http://www.onvif.org/ver10/deviceIO/wsdl");
         namespaces.insert("tptz", "http://www.onvif.org/ver20/ptz/wsdl");
@@ -114,7 +119,7 @@ void DeviceSearcher::readPendingDatagrams() {
         device_infos.insert("scopes", parser.getValue("//d:ProbeMatches/d:ProbeMatch/wsa:EndpointReference/wsa:Address"));
         device_infos.insert("metadata_version", parser.getValue("//d:ProbeMatches/d:ProbeMatch/d:MetadataVersion"));
         
-        qDebug() << "Device =============>\n" << device_infos;
+        //qDebug() << "Device =============>\n" << device_infos;
         emit receiveData(device_infos);
     }    
 }

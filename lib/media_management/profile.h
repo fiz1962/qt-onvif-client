@@ -38,7 +38,7 @@ namespace ONVIF{
         QList<QString> m_namePtz;
         QList<int> m_useCountPtz;
         QList<QString> m_nodeToken;
-        QList<QString> m_defaultAbsolutePantTiltPositionSpace;
+        QList<QString> m_defaultAbsolutePanTiltPositionSpace;
         QList<QString> m_defaultAbsoluteZoomPositionSpace;
         QList<QString> m_defaultRelativePantTiltTranslationSpace;
         QList<QString> m_defaultRelativeZoomTranslationSpace;
